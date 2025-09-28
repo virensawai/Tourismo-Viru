@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO & Meta Tags -->
+    <title>Amravati's Green Gem: The Bamboo Garden | Information</title>
+    <meta name="description" content="Discover India's first dedicated bamboo garden in Amravati. Explore facts about its rich botanical collection, ecological significance, and visitor information.">
+    
+    <!-- Dependencies -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* BRAND COLORS */
+            --color-primary: #34D399; /* Emerald 400 */
+            --color-primary-dark: #A7F3D0; /* Emerald 200 */
+
+            /* THEME */
+            --color-text: #E5E5E5; /* Neutral 200 */
+            --color-text-muted: #A3A3A3; /* Neutral 400 */
+            --color-surface: rgba(10, 10, 10, 0.5); /* Semi-transparent black */
+            --color-border: rgba(255, 255, 255, 0.15);
+            
+            /* TYPOGRAPHY */
+            --font-sans: 'Roboto', sans-serif;
+            --font-serif: 'Playfair Display', serif;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-image: url('./Assets/bamboo garden.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: var(--color-text);
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0,0,0,0.5); /* Dark overlay */
+            z-index: -1;
+        }
+
+        h1, h2, h3 {
+            font-family: var(--font-serif);
+        }
+
+        .info-card {
+            background-color: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: 0.75rem; /* 12px */
+            padding: 1.5rem; /* 24px */
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Main Content -->
+    <main class="w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20">
+        
+        <!-- Page Title & Introduction -->
+        <section class="text-center mb-16">
+            <h1 class="text-4xl md:text-6xl text-stone-100 mb-4">
+                Amravati's Green Gem: The Bamboo Garden
+            </h1>
+            <p class="text-lg md:text-xl text-stone-300 max-w-3xl mx-auto">
+                Nestled near Chatri Talao Lake, the Bamboo Garden is a unique ecological park and a pioneering attraction in India. As the country's first dedicated bamboo garden, it showcases the immense beauty and versatility of this remarkable plant while serving as a vital hub for conservation, education, and recreation.
+            </p>
+        </section>
+
+        <!-- Visitor Information -->
+        <section class="mb-16">
+             <h2 class="text-3xl md:text-4xl text-emerald-300 mb-8 text-center">At a Glance: Visitor Information</h2>
+             <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                 <div class="info-card text-center">
+                     <h3 class="font-bold text-emerald-200 text-lg mb-2">LOCATION</h3>
+                     <p class="text-stone-300">Laghuvetan Colony, FDCM campus, near Chatri Talao Lake, Amravati, Maharashtra 444602.</p>
+                 </div>
+                 <div class="info-card text-center">
+                     <h3 class="font-bold text-emerald-200 text-lg mb-2">TIMINGS</h3>
+                     <p class="text-stone-300">8:00 AM – 6:00 PM <br><span class="font-medium text-red-400">Closed on Mondays</span></p>
+                 </div>
+                 <div class="info-card text-center">
+                     <h3 class="font-bold text-emerald-200 text-lg mb-2">ENTRY FEE</h3>
+                     <p class="text-stone-300">₹30 per person <br><span class="text-sm">(Full fee for children over 5)</span></p>
+                 </div>
+             </div>
+        </section>
+
+        <!-- Detailed Facts & Highlights -->
+        <section>
+            <h2 class="text-3xl md:text-4xl text-emerald-300 mb-8 text-center">Facts & Detailed Information</h2>
+            <div class="space-y-6">
+                
+                <div class="info-card">
+                    <h3 class="text-xl font-bold text-stone-100 mb-2">A Pioneering Initiative</h3>
+                    <p class="text-stone-300">
+                        Spanning over 10 acres, this garden holds the distinction of being India's first to be exclusively focused on bamboo. It was developed by the Forest Development Corporation of Maharashtra (FDCM) to promote bamboo cultivation and awareness.
+                    </p>
+                </div>
+                
+                <div class="info-card">
+                    <h3 class="text-xl font-bold text-stone-100 mb-2">Rich Botanical Collection</h3>
+                    <p class="text-stone-300">
+                        The garden is a living library of bamboo, featuring an impressive collection of over <span class="font-bold text-emerald-400">65 distinct bamboo varieties</span> from different parts of the country. This diversity showcases the wide range of sizes, colors, and forms that bamboo can take.
+                    </p>
+                </div>
+                
+                <div class="info-card">
+                    <h3 class="text-xl font-bold text-stone-100 mb-2">More Than Just Bamboo</h3>
+                    <p class="text-stone-300">
+                        Complementing the main attraction is a sprawling cactus garden that boasts more than <span class="font-bold text-emerald-400">300 unique species</span>. This adds another layer of botanical interest and creates a beautiful contrast of textures and forms.
+                    </p>
+                </div>
+
+                <div class="info-card">
+                    <h3 class="text-xl font-bold text-stone-100 mb-2">Engaging Activities & Features</h3>
+                    <p class="text-stone-300">
+                        The garden is designed for visitors of all ages. It includes well-laid walking paths for leisurely strolls, intricate bamboo sculptures that display the material's artistic potential, a dedicated children's play area, and designated picnic zones, making it a perfect spot for a family outing.
+                    </p>
+                </div>
+
+                <div class="info-card">
+                    <h3 class="text-xl font-bold text-stone-100 mb-2">Ecological and Educational Hub</h3>
+                    <p class="text-stone-300">
+                        Beyond recreation, the garden serves an important educational purpose. It highlights bamboo's role as a sustainable resource, its rapid growth cycle, and its significant contribution to producing oxygen and combating soil erosion. It's a place for learning about conservation and green initiatives.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Closing Statement -->
+        <section class="text-center mt-16">
+            <p class="text-lg text-stone-300 max-w-3xl mx-auto italic">
+                Its serene atmosphere and unique green landscapes make the Bamboo Garden a must-visit destination for nature lovers, botany enthusiasts, and anyone looking for a peaceful escape in Amravati.
+            </p>
+        </section>
+
+    </main>
+
+</body>
+</html>
+

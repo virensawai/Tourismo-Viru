@@ -405,6 +405,110 @@
                 font-size: 3rem;
             }
         }
+          .main-footer {
+            background-color: #080D1A; /* Slightly darker shade of blue */
+            padding: 4rem 0 2rem 0;
+            border-top: 1px solid var(--line-color);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            gap: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-logo-section .logo {
+            font-size: 1.875rem;
+            font-weight: 900;
+            color: white;
+            letter-spacing: 0.2em;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+        
+        .footer-logo-section .description {
+            color: var(--text-muted);
+            line-height: 1.6;
+            max-width: 300px;
+        }
+
+        .footer-section-title {
+            font-size: 1.125rem; /* 18px */
+            font-weight: 700;
+            color: white;
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.05em;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            transition: color 0.3s ease, padding-left 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-gold);
+            padding-left: 5px;
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .footer-socials a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--line-color);
+            border-radius: 50%;
+            color: white;
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .footer-socials a:hover {
+            background-color: var(--accent-gold);
+            border-color: var(--accent-gold);
+            color: var(--dark-blue);
+        }
+        
+        .footer-socials svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .footer-bottom-bar {
+            border-top: 1px solid var(--line-color);
+            padding-top: 2rem;
+            text-align: center;
+            font-size: 0.875rem;
+            color: var(--text-muted);
+        }
+
+        /* Responsive Styles for Footer */
+        @media (min-width: 640px) { /* sm */
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (min-width: 1024px) { /* lg */
+             .footer-grid {
+                grid-template-columns: 2fr 1fr 1fr 1.5fr;
+                gap: 3rem;
+            }
+        }
 
     </style>
 </head>
@@ -464,7 +568,7 @@
                     <h2 class="about-title">Bamboo Garden </h2>
                     <p class="about-description">
                         The Bamboo Garden in Amravati, India’s first dedicated bamboo park, offers a unique eco-tourism experience with over 65 species of bamboo and a specialized cactus garden featuring 300+ varieties. With scenic walking trails, bamboo bridges, and a peaceful lotus pond, it’s a perfect getaway for nature lovers, families, and photographers alike. Located at Forest Rest House, Wadali, Amravati Camp, this destination beautifully blends nature, learning, and relaxation.                    </p>
-                    <a href="#" class="about-read-more">
+                    <a href="bamboo.html" class="about-read-more">
                         read more
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -494,7 +598,7 @@
                     <h2 class="about-title">Oxegen Park</h2>
                     <p class="about-description">
                         The Oxygen Park in Amravati is a refreshing green sanctuary that promotes a healthy, pollution-free environment. Filled with diverse trees and plants, it naturally purifies the air while offering scenic trails, a children’s play area, and peaceful spots for yoga and meditation. Located at Old Panchvati, near Wadali Camp, Shyam Nagar, it’s an ideal destination for families, fitness enthusiasts, and nature seekers.                    </p>
-                    <a href="#" class="about-read-more">
+                    <a href="oxy.html" class="about-read-more">
                         read more
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -512,7 +616,7 @@
                     <h2 class="about-title">Ambadevi Temple</h2>
                     <p class="about-description">
                         The Ambadevi Temple in Amravati is a revered spiritual landmark dedicated to Goddess Amba, believed to be the city’s guardian deity. Known for its ancient heritage and deep cultural significance, the temple attracts thousands of devotees, especially during festivals like Navratri. With its peaceful atmosphere and traditional architecture, it offers a serene space for prayer and reflection. Located in the heart of Amravati city, it is a must-visit for those seeking spiritual connection and cultural heritage.                    </p>
-                    <a href="#" class="about-read-more">
+                    <a href="ambtem.html" class="about-read-more">
                         read more
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -522,7 +626,7 @@
                 <div class="about-image-container">
                     <div class="about-image-wrapper">
                        <img src="./Assets/temple.webp" 
-                            alt="Placeholder image for a travel location">
+                            alt=" image for location">
                     </div>
                 </div>
             </div>
@@ -542,7 +646,7 @@
                     <h2 class="about-title">Chhatri Talao</h2>
                     <p class="about-description">
                         The Chhatri Talao in Amravati is a scenic water reservoir originally built to provide drinking water to the city. Surrounded by lush greenery and a calm atmosphere, it is now a popular spot for picnics, evening walks, and photography. The reflection of the sky and surrounding trees on the lake creates a peaceful and refreshing escape from city life. Located near Camp area, Amravati, it’s an ideal place for families, nature lovers, and those seeking relaxation by the water.                    </p>
-                    <a href="#" class="about-read-more">
+                    <a href="chhtri.html" class="about-read-more">
                         read more
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -560,7 +664,7 @@
                     <h2 class="about-title">Wadali Talao & Wadali Garden</h2>
                     <p class="about-description">
                         The Wadali Talao in Amravati is a serene lake built to supply fresh water to the city and now serves as a popular recreational spot. Adjacent to it lies the Wadali Garden, a beautifully maintained park ideal for family outings, morning walks, and children’s playtime. Together, the lake and garden create a refreshing escape with scenic views, greenery, and a peaceful environment. Located near Wadali Camp, Amravati, this destination is perfect for families, fitness enthusiasts, and nature lovers seeking relaxation close to the city.                    </p>
-                    <a href="#" class="about-read-more">
+                    <a href="wadali.html" class="about-read-more">
                         read more
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -577,6 +681,44 @@
         </section>
 
     </div>
+    <footer class="main-footer">
+    <div class="container">
+        <div class="footer-grid">
+            <!-- Footer Column 1: Logo and Description -->
+            <div class="footer-column footer-logo-section">
+                <a href="#" class="logo">TOURISMO</a>
+                <p class="description">
+                    Your ultimate assistant for discovering the hidden gems and breathtaking landscapes of Amravati. Travel, explore, and experience.
+                </p>
+            </div>
+
+            <!-- Footer Column 2: Quick Links -->
+            <div class="footer-column">
+                <h3 class="footer-section-title">Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Travel Map</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+
+            <!-- Footer Column 3: Destinations -->
+            <div class="footer-column">
+                <h3 class="footer-section-title">Top Sights</h3>
+                <ul class="footer-links">
+                    <li><a href="bamboo.html">Bamboo Garden</a></li>
+                    <li><a href="oxy.html">Oxygen Park</a></li>
+                    <li><a href="ambtem.html">Ambadevi Temple</a></li>
+                    <li><a href="chhtri.html">Chhatri Talao</a></li>
+                </ul>
+            </div>
+        
+        <div class="footer-bottom-bar">
+            &copy; 2025 Tourismo. Created by CEP-GROUP-12.
+        </div>
+    </div>
+</footer>
     
     <script>
         document.addEventListener('DOMContentLoaded', () => {
