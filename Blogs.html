@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tourismo - The Chronicles</title>
+    <meta name="description" content="Explore the stories, histories, and hidden gems of Amravati. In-depth articles from the team at Tourismo.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --dark-blue: #0A0F1A;
+            --panel-bg: #111827;
+            --accent-gold: #D1A35D;
+            --text-primary: #F9FAFB;
+            --text-secondary: #9CA3AF;
+            --line-color: rgba(255, 255, 255, 0.1);
+            --ease-out-quint: cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--dark-blue);
+            color: var(--text-primary);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+            cursor: none;
+        }
+        
+        /* --- CUSTOM CURSOR --- */
+        .cursor { display: none; } /* Initially hidden, enabled by JS on non-touch */
+        @media (pointer: fine) {
+            .cursor {
+                display: block;
+                position: fixed;
+                width: 8px; height: 8px;
+                background-color: var(--accent-gold);
+                border-radius: 50%;
+                left: 0; top: 0;
+                pointer-events: none;
+                transform: translate(-50%, -50%);
+                z-index: 9999;
+                transition: transform 0.2s var(--ease-out-quint);
+            }
+            .cursor-outline {
+                display: block;
+                position: fixed;
+                width: 30px; height: 30px;
+                border: 1px solid var(--accent-gold);
+                border-radius: 50%;
+                left: 0; top: 0;
+                pointer-events: none;
+                transform: translate(-50%, -50%);
+                z-index: 9999;
+                transition: width 0.4s var(--ease-out-quint), height 0.4s var(--ease-out-quint), opacity 0.4s, transform 0.1s linear;
+                mix-blend-mode: difference;
+            }
+            .cursor.hovered ~ .cursor-outline {
+                width: 60px; height: 60px; opacity: 0.5; border-color: white;
+            }
+        }
+
+        .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+
+        .main-header {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 2rem 1.5rem;
+            transition: all 0.4s var(--ease-out-quint);
+        }
+        .main-header.scrolled {
+            padding: 1rem 1.5rem; background-color: rgba(17, 24, 39, 0.8);
+            backdrop-filter: blur(10px); border-bottom: 1px solid var(--line-color);
+        }
+        .header-container { display: flex; justify-content: space-between; align-items: center; max-width: 1280px; margin: 0 auto; }
+        .logo, .main-nav a { text-decoration: none; color: white; transition: color 0.3s ease; }
+        .logo { font-size: 1.5rem; font-weight: 900; letter-spacing: 0.2em; }
+        .main-nav a { font-size: 0.875rem; font-weight: 500; margin-left: 2rem; }
+        
+        .page-hero {
+            padding-top: 10rem;
+            text-align: center;
+        }
+        .page-hero h1 { font-size: clamp(3rem, 6vw, 5rem); font-weight: 900; line-height: 1.1; margin-bottom: 1rem; }
+        .page-hero p { font-size: clamp(1rem, 2vw, 1.25rem); color: var(--text-secondary); max-width: 600px; margin: 0 auto; }
+
+        .featured-story {
+            padding: 8rem 0;
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+        .featured-background {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0.3;
+            z-index: -1;
+        }
+        .featured-content {
+            position: relative;
+            z-index: 2;
+        }
+        .featured-content .card-category { font-size: 1rem; }
+        .featured-content .card-title { font-size: clamp(2rem, 4vw, 3.5rem); max-width: 800px; }
+        .featured-content .card-meta { font-size: 1rem; }
+        .featured-content a {
+            text-decoration: none;
+            color: var(--text-primary);
+        }
+
+        .filters {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 4rem 0;
+        }
+        .filter-btn {
+            background: none; border: 1px solid var(--line-color); color: var(--text-secondary);
+            padding: 0.75rem 1.5rem; border-radius: 99px; cursor: pointer;
+            transition: all 0.3s var(--ease-out-quint);
+        }
+        .filter-btn:hover { background-color: var(--panel-bg); color: var(--text-primary); }
+        .filter-btn.active { background-color: var(--accent-gold); color: var(--dark-blue); border-color: var(--accent-gold); font-weight: 600; }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            perspective: 1500px;
+        }
+
+        .article-card {
+            display: block; background-color: var(--panel-bg); border-radius: 1rem;
+            overflow: hidden; border: 1px solid var(--line-color);
+            text-decoration: none; color: var(--text-primary);
+            position: relative;
+            will-change: transform;
+            transition: transform 0.4s var(--ease-out-quint), box-shadow 0.4s var(--ease-out-quint), opacity 0.4s var(--ease-out-quint);
+        }
+        .article-card.is-exiting {
+            transform: scale(0.9);
+            opacity: 0;
+        }
+        .card-image-wrapper { height: 220px; overflow: hidden; }
+        .card-image-wrapper img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s var(--ease-out-quint); }
+        .article-card:hover .card-image-wrapper img { transform: scale(1.05); }
+        .card-content { padding: 1.5rem; }
+        .card-category { color: var(--accent-gold); font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem; }
+        .card-title { font-size: 1.25rem; font-weight: 700; line-height: 1.4; margin-bottom: 1rem; }
+        .card-meta { font-size: 0.875rem; color: var(--text-secondary); }
+        
+        .main-footer { padding: 4rem 1.5rem; text-align: center; color: var(--text-secondary); border-top: 1px solid var(--line-color); margin-top: 6rem; }
+        
+        @media (max-width: 768px) {
+            .main-nav { display: none; }
+            .filters { flex-wrap: wrap; }
+            .page-hero { padding: 8rem 0 4rem; }
+            .featured-story { padding: 4rem 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="cursor"></div>
+    <div class="cursor-outline"></div>
+
+    <header class="main-header">
+        <div class="header-container">
+            <a href="index.html" class="logo">TOURISMO</a>
+            <nav class="main-nav">
+                <a href="travel-map.html">Travel Map</a>
+                <a href="about-us.html">About Us</a>
+                <a href="Blogs.html">Blog</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div id="featured-story-container"></div>
+
+        <section class="container">
+            <div class="filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="Nature">Nature</button>
+                <button class="filter-btn" data-filter="History">History</button>
+                <button class="filter-btn" data-filter="Culture">Culture</button>
+            </div>
+            <div class="blog-grid">
+                <!-- Articles will be injected by JS -->
+            </div>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        &copy; 2025 Tourismo. A Project by CEP-GROUP-12.
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const app = {
+                articles: [
+                    { title: 'The Enduring Legacy of Gawilgarh Fort', category: 'History', date: 'Oct 01, 2025', image: 'https://images.unsplash.com/photo-1632642878036-681412175990?q=80&w=2070&auto=format&fit=crop', featured: true },
+                    { title: 'A Walk Through the Clouds: Exploring the Vistas of Chikhaldara', category: 'Nature', date: 'Sep 25, 2025', image: 'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?q=80&w=1948&auto=format&fit=crop' },
+                    { title: 'The Spiritual Heart of Amravati: A Guide to Ambadevi Temple', category: 'Culture', date: 'Sep 18, 2025', image: 'https://images.unsplash.com/photo-1588243183536-1eeb4b66dc34?q=80&w=2070&auto=format&fit=crop' },
+                    { title: 'Into the Wild: A Safari Guide to Melghat Tiger Reserve', category: 'Nature', date: 'Sep 12, 2025', image: 'https://images.unsplash.com/photo-1608447702221-1d5423e803c5?q=80&w=2070&auto=format&fit=crop' },
+                    { title: 'Uncovering the Secrets of Amner Fort', category: 'History', date: 'Sep 05, 2025', image: 'https://images.unsplash.com/photo-1603812490422-b07221544716?q=80&w=2070&auto=format&fit=crop' },
+                    { title: 'Finding Serenity at Shakkar Lake', category: 'Nature', date: 'Aug 29, 2025', image: 'https://images.unsplash.com/photo-1545465926-291746ac6e83?q=80&w=2071&auto=format&fit=crop' }
+                ],
+                grid: document.querySelector('.blog-grid'),
+                filters: document.querySelectorAll('.filter-btn'),
+                isMobile: window.innerWidth <= 768,
+
+                init() {
+                    if (!this.isMobile) this.setupCursor();
+                    this.renderFeatured();
+                    this.renderArticles();
+                    this.setupFilters();
+                    this.setupHeader();
+                },
+
+                setupCursor() {
+                    const cursor = document.querySelector('.cursor');
+                    const cursorOutline = document.querySelector('.cursor-outline');
+                    window.addEventListener('mousemove', e => {
+                        cursor.style.left = `${e.clientX}px`;
+                        cursor.style.top = `${e.clientY}px`;
+                        cursorOutline.style.left = `${e.clientX}px`;
+                        cursorOutline.style.top = `${e.clientY}px`;
+                    });
+                },
+
+                renderFeatured() {
+                    const featuredArticle = this.articles.find(a => a.featured);
+                    if (!featuredArticle) {
+                        // If no featured article, render a standard hero
+                        const container = document.getElementById('featured-story-container');
+                        container.innerHTML = `
+                        <section class="page-hero">
+                            <div class="container">
+                                <h1>The Chronicles</h1>
+                                <p>In-depth stories, travel guides, and cultural deep dives that bring the soul of Amravati to life.</p>
+                            </div>
+                        </section>`;
+                        return;
+                    }
+                    
+                    const container = document.getElementById('featured-story-container');
+                    container.innerHTML = `
+                        <section class="page-hero featured-story">
+                            <div class="featured-background" style="background-image: linear-gradient(rgba(10, 15, 26, 0.7), var(--dark-blue)), url('${featuredArticle.image}')"></div>
+                            <div class="container featured-content">
+                                <a href="article-template.html">
+                                    <p class="card-category">Featured Story</p>
+                                    <h1 class="card-title">${featuredArticle.title}</h1>
+                                    <p class="card-meta">${featuredArticle.date}</p>
+                                </a>
+                            </div>
+                        </section>
+                    `;
+                },
+                
+                renderArticles(filter = 'all') {
+                    Array.from(this.grid.children).forEach(child => {
+                        child.classList.add('is-exiting');
+                    });
+
+                    setTimeout(() => {
+                        this.grid.innerHTML = '';
+                        const filtered = (filter === 'all')
+                            ? this.articles.filter(a => !a.featured)
+                            : this.articles.filter(a => a.category === filter && !a.featured);
+
+                        filtered.forEach((article) => {
+                            const card = document.createElement('a');
+                            card.href = 'article-template.html';
+                            card.className = 'article-card';
+                            card.innerHTML = `
+                                <div class="card-image-wrapper"><img src="${article.image}" alt="${article.title}"></div>
+                                <div class="card-content">
+                                    <p class="card-category">${article.category}</p>
+                                    <h2 class="card-title">${article.title}</h2>
+                                    <p class="card-meta">${article.date}</p>
+                                </div>`;
+                            this.grid.appendChild(card);
+                        });
+
+                        const observer = new IntersectionObserver((entries) => {
+                            entries.forEach((entry, index) => {
+                                if (entry.isIntersecting) {
+                                    entry.target.style.transitionDelay = `${index * 100}ms`;
+                                    entry.target.classList.add('is-visible');
+                                    observer.unobserve(entry.target);
+                                }
+                            });
+                        }, { threshold: 0.1 });
+                        
+                        Array.from(this.grid.children).forEach(child => observer.observe(child));
+                        if (!this.isMobile) this.setupInteractiveElements();
+
+                    }, 400);
+                },
+
+                setupFilters() {
+                    this.filters.forEach(button => {
+                        button.addEventListener('click', () => {
+                            this.filters.forEach(btn => btn.classList.remove('active'));
+                            button.classList.add('active');
+                            this.renderArticles(button.dataset.filter);
+                        });
+                    });
+                },
+
+                setupHeader() {
+                    const header = document.querySelector('.main-header');
+                    window.addEventListener('scroll', () => {
+                        header.classList.toggle('scrolled', window.scrollY > 50);
+                    }, { passive: true });
+                },
+
+                setupInteractiveElements() {
+                    const cursor = document.querySelector('.cursor');
+                    const interactiveElements = document.querySelectorAll('a, button, .article-card');
+                    interactiveElements.forEach(el => {
+                        el.addEventListener('mouseenter', () => cursor.classList.add('hovered'));
+                        el.addEventListener('mouseleave', () => cursor.classList.remove('hovered'));
+                    });
+
+                    const tiltableElements = document.querySelectorAll('.article-card, .featured-story');
+                    tiltableElements.forEach(el => {
+                        el.addEventListener('mousemove', (e) => {
+                            const rect = el.getBoundingClientRect();
+                            const x = e.clientX - rect.left;
+                            const y = e.clientY - rect.top;
+                            const { width, height } = rect;
+                            const rotateX = (y / height - 0.5) * -10;
+                            const rotateY = (x / width - 0.5) * 10;
+                            el.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+                        });
+                        el.addEventListener('mouseleave', () => {
+                            el.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
+                        });
+                    });
+                }
+            };
+
+            app.init();
+        });
+    </script>
+</body>
+</html>
+
