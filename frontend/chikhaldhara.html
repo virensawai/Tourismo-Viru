@@ -125,24 +125,24 @@
     </style>
 </head>
 <body>
-    <div id="progress-bar"></div>
-    <header class="main-header">
+    <div id="progress-bar" role="progressbar" aria-label="Reading progress" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+    <header class="main-header" role="banner">
         <div class="header-container">
-            <a href="index.html" class="logo">TOURISMO</a>
-            <nav class="main-nav">
-                <a href="travel-map.html">Travel Map</a>
-                <a href="about-us.html">About Us</a>
-                <a href="blog.html">Blog</a>
+            <a href="../index.html" class="logo" aria-label="Tourismo – Go to homepage">TOURISMO</a>
+            <nav class="main-nav" aria-label="Primary navigation">
+                <a href="../Travelmap.html">Travel Map</a>
+                <a href="../About-us.html">About Us</a>
+                <a href="../Blogs.html">Blog</a>
             </nav>
         </div>
     </header>
 
-    <main>
-        <section class="article-hero">
+    <main id="main-content">
+        <section class="article-hero" aria-labelledby="article-heading">
             <div class="hero-background"></div>
             <div class="hero-content">
                 <p class="category">Nature</p>
-                <h1>A Walk Through the Clouds: Exploring the Vistas of Chikhaldara</h1>
+                <h1 id="article-heading">A Walk Through the Clouds: Exploring the Vistas of Chikhaldara</h1>
                 <p class="meta">By CEP-GROUP-12 &bull; Sep 25, 2025</p>
             </div>
         </section>
@@ -160,7 +160,7 @@
                 
                 <p>The region is not just about scenic beauty; it's also steeped in mythology, believed to be the place where the Pandava brother Bheema killed the villainous Keechaka. This blend of natural splendor and cultural history adds a rich depth to the travel experience. Exploring the local coffee plantations was another highlight, offering insight into the delicate process of coffee cultivation.</p>
 
-                <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?q=80&w=1948&auto=format&fit=crop" alt="Misty mountains and lush green valleys in Chikhaldara.">
+                <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?q=80&w=1948&auto=format&fit=crop" alt="Misty mountains and lush green valleys in Chikhaldara." loading="lazy" decoding="async">
 
                 <h2>A Journey's End</h2>
                 <p>As our trip concluded, the lasting impression was one of immense tranquility. Chikhaldara is more than just a destination; it's an experience that captivates your senses and soothes your soul. Whether you're an adventurer, a nature lover, or simply seeking peace, the misty hills of Chikhaldara welcome you with open arms.</p>
@@ -168,7 +168,7 @@
         </article>
     </main>
 
-    <footer class="main-footer">
+    <footer class="main-footer" role="contentinfo">
         &copy; 2025 Tourismo. A Project by CEP-GROUP-12.
     </footer>
 
@@ -187,6 +187,7 @@
                 const docHeight = document.documentElement.scrollHeight - window.innerHeight;
                 const scrollPercent = (scrollTop / docHeight) * 100;
                 progressBar.style.width = `${scrollPercent}%`;
+                progressBar.setAttribute('aria-valuenow', Math.round(scrollPercent));
             };
 
             window.addEventListener('scroll', onScroll, { passive: true });

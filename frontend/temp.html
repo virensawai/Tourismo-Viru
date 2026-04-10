@@ -126,25 +126,25 @@
     </style>
 </head>
 <body>
-    <div id="progress-bar"></div>
-    <header class="main-header">
+    <div id="progress-bar" role="progressbar" aria-label="Reading progress" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+    <header class="main-header" role="banner">
         <div class="header-container">
             <a href="index.html" class="logo">TOURISMO</a>
-            <nav class="main-nav">
-                <a href="travel-map.html">Travel Map</a>
-                <a href="about-us.html">About Us</a>
-                <a href="blog.html">Blog</a>
+            <nav class="main-nav" aria-label="Primary navigation">
+                <a href="Travelmap.html">Travel Map</a>
+                <a href="About-us.html">About Us</a>
+                <a href="Blogs.html">Blog</a>
             </nav>
         </div>
     </header>
 
-    <main>
-        <section class="article-hero">
+    <main id="main-content">
+        <section class="article-hero" aria-labelledby="article-heading">
             <div class="hero-background"></div>
             <div class="hero-content">
                 <!-- DYNAMIC CONTENT -->
                 <p class="category">History</p>
-                <h1>The Enduring Legacy of Gawilgarh Fort</h1>
+                <h1 id="article-heading">The Enduring Legacy of Gawilgarh Fort</h1>
                 <p class="meta">By CEP-GROUP-12 &bull; Oct 01, 2025</p>
             </div>
         </section>
@@ -163,7 +163,7 @@
                 
                 <p>The fort houses several water tanks, a testament to the self-sufficiency of its design. The largest of these, the "Dev Talav," is a serene spot that contrasts with the fort's martial history. We also explored the remnants of palaces and mosques, each structure adding another layer to the fort's rich historical tapestry.</p>
 
-                <img src="https://images.unsplash.com/photo-1632642878036-681412175990?q=80&w=2070&auto=format&fit=crop" alt="A scenic viewpoint from the ramparts of Gawilgarh Fort.">
+                <img src="https://images.unsplash.com/photo-1632642878036-681412175990?q=80&w=2070&auto=format&fit=crop" alt="A scenic viewpoint from the ramparts of Gawilgarh Fort." loading="lazy" decoding="async">
 
                 <h2>A View from the Top</h2>
                 <p>The true reward for any visitor is the panoramic view from the fort's highest points. Looking out over the sprawling Melghat region, one can appreciate the strategic importance of Gawilgarh. It's a view that has remained unchanged for centuries, offering a profound connection to the past. Visiting Gawilgarh is more than just a historical excursion; it's an experience that ignites the imagination and leaves an indelible mark on the soul.</p>
@@ -171,7 +171,7 @@
         </article>
     </main>
 
-    <footer class="main-footer">
+    <footer class="main-footer" role="contentinfo">
         &copy; 2025 Tourismo. A Project by CEP-GROUP-12.
     </footer>
 
@@ -190,6 +190,7 @@
                 const docHeight = document.documentElement.scrollHeight - window.innerHeight;
                 const scrollPercent = (scrollTop / docHeight) * 100;
                 progressBar.style.width = `${scrollPercent}%`;
+                progressBar.setAttribute('aria-valuenow', Math.round(scrollPercent));
             };
 
             window.addEventListener('scroll', onScroll, { passive: true });

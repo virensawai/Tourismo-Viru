@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tourismo – Insights & Ideas | Amravati Travel Blog</title>
+    <meta name="description" content="Read our latest insights, travel guides, and stories about Amravati.">
+    <!-- [SEO] Open Graph tags -->
+    <meta property="og:title" content="Tourismo – Insights & Ideas | Amravati Travel Blog">
+    <meta property="og:description" content="Read the latest travel guides, hidden histories, and cultural deep dives about Amravati.">
+    <meta property="og:type" content="website">
+    <!-- [PERFORMANCE] Theme color -->
+    <meta name="theme-color" content="#0B1120">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --dark-blue: #0B1120;
+            --light-gray: #E0E0E0;
+            --accent-gold: #D1A35D;
+            --text-muted: rgba(255, 255, 255, 0.5);
+            --line-color: rgba(255, 255, 255, 0.15);
+            --card-bg: #111827;
+            --card-hover-bg: #1A2235;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--dark-blue);
+            color: var(--light-gray);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* --- Header --- */
+        .main-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 50;
+            padding: 1.5rem 0;
+            transition: background-color 0.3s ease, padding 0.3s ease;
+        }
+
+        .main-header.scrolled {
+            background-color: rgba(11, 17, 32, 0.9);
+            backdrop-filter: blur(12px);
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--line-color);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: white;
+            letter-spacing: 0.15em;
+        }
+
+        .main-nav {
+            display: none;
+        }
+        
+        @media (min-width: 768px) {
+            .main-nav {
+                display: flex;
+                gap: 2rem;
+            }
+        }
+
+        .main-nav a {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--light-gray);
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .main-nav a:hover, .main-nav a.active {
+            color: var(--accent-gold);
+        }
+
+        .main-nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-gold);
+            transition: width 0.3s ease;
+        }
+
+        .main-nav a:hover::after, .main-nav a.active::after {
+            width: 100%;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            position: relative;
+            padding: 12rem 0 6rem;
+            text-align: center;
+            overflow: hidden;
+            background: radial-gradient(circle at 50% 0%, rgba(209, 163, 93, 0.1) 0%, transparent 60%);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(209, 163, 93, 0.03), transparent);
+            animation: moveGradient 15s linear infinite;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        @keyframes moveGradient {
+            0% { transform: translateY(0) rotate(0); }
+            100% { transform: translateY(-50%) rotate(180deg); }
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 900;
+            color: white;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 0.8s ease forwards;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 0.8s ease 0.2s forwards;
+            line-height: 1.6;
+        }
+
+        @keyframes fadeUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- Featured Blog Section --- */
+        .featured-blog {
+            margin: 3rem auto 6rem;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s ease;
+        }
+
+        .featured-blog.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .featured-card {
+            display: grid;
+            grid-template-columns: 1fr;
+            background-color: var(--card-bg);
+            border-radius: 1.5rem;
+            overflow: hidden;
+            border: 1px solid var(--line-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .featured-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .featured-img-container {
+            width: 100%;
+            height: 350px;
+            overflow: hidden;
+        }
+
+        .featured-img-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .featured-card:hover .featured-img-container img {
+            transform: scale(1.05);
+        }
+
+        .featured-content {
+            padding: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        @media (min-width: 1024px) {
+            .featured-card {
+                grid-template-columns: 1.2fr 1fr;
+            }
+            .featured-img-container {
+                height: 450px;
+            }
+            .featured-content {
+                padding: 4rem;
+            }
+        }
+
+        .tag {
+            color: var(--accent-gold);
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+
+        .featured-title {
+            font-size: clamp(1.75rem, 3vw, 2.5rem);
+            font-weight: 800;
+            color: white;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        .featured-desc {
+            color: var(--text-muted);
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            font-size: 1rem;
+        }
+
+        .meta-info {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: auto;
+        }
+
+        .date {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .read-more {
+            display: inline-flex;
+            align-items: center;
+            font-weight: 600;
+            color: white;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .read-more svg {
+            margin-left: 0.5rem;
+            width: 16px;
+            height: 16px;
+            transition: transform 0.3s ease;
+        }
+
+        .featured-card:hover .read-more {
+            color: var(--accent-gold);
+        }
+
+        .featured-card:hover .read-more svg {
+            transform: translateX(4px);
+        }
+
+        /* --- Search & Filters --- */
+        .controls-section {
+            margin-bottom: 4rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeUp 0.8s ease 0.4s forwards;
+        }
+
+        @media (min-width: 768px) {
+            .controls-section {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: center;
+            }
+        }
+
+        .search-box {
+            position: relative;
+            width: 100%;
+            max-width: 320px;
+        }
+
+        .search-box input {
+            width: 100%;
+            background-color: transparent;
+            border: 1px solid var(--line-color);
+            border-radius: 2rem;
+            padding: 0.8rem 1rem 0.8rem 2.5rem;
+            color: white;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: var(--accent-gold);
+            box-shadow: 0 0 0 3px rgba(209, 163, 93, 0.1);
+        }
+
+        .search-box input::placeholder {
+            color: var(--text-muted);
+        }
+
+        .search-box svg {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 16px;
+            height: 16px;
+            color: var(--text-muted);
+        }
+
+        .filters {
+            display: flex;
+            gap: 0.5rem;
+            overflow-x: auto;
+            padding-bottom: 0.5rem;
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+        
+        .filters::-webkit-scrollbar {
+            display: none;
+        }
+
+        .filter-btn {
+            background-color: transparent;
+            border: 1px solid var(--line-color);
+            color: var(--light-gray);
+            padding: 0.5rem 1.25rem;
+            border-radius: 2rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+            color: white;
+        }
+
+        .filter-btn.active {
+            background-color: var(--accent-gold);
+            border-color: var(--accent-gold);
+            color: var(--dark-blue);
+            font-weight: 600;
+        }
+
+        /* --- Blog Grid --- */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        @media (min-width: 768px) {
+            .blog-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .blog-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .blog-card {
+            background-color: transparent;
+            border-radius: 1rem;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .blog-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .card-img-wrapper {
+            width: 100%;
+            height: 220px;
+            overflow: hidden;
+            border-radius: 1rem;
+            position: relative;
+        }
+
+        .card-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .card-img-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(11, 17, 32, 0.6), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .blog-card:hover .card-img-wrapper img {
+            transform: scale(1.05);
+        }
+
+        .blog-card:hover .card-img-overlay {
+            opacity: 1;
+        }
+
+        .card-content {
+            padding: 1.5rem 0.5rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 0.75rem;
+            line-height: 1.4;
+            transition: color 0.3s ease;
+        }
+
+        .blog-card:hover .card-title {
+            color: var(--accent-gold);
+        }
+
+        .card-desc {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        /* --- Pagination / Load More --- */
+        .load-more-container {
+            text-align: center;
+            margin-bottom: 6rem;
+        }
+
+        .load-more-btn {
+            background-color: transparent;
+            border: 1px solid var(--accent-gold);
+            color: var(--accent-gold);
+            padding: 0.8rem 2.5rem;
+            border-radius: 2rem;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .load-more-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--accent-gold);
+            z-index: -1;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s ease;
+        }
+
+        .load-more-btn:hover {
+            color: var(--dark-blue);
+        }
+
+        .load-more-btn:hover::before {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
+        /* Loading Spinner */
+        .spinner {
+            display: none;
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(209, 163, 93, 0.3);
+            border-radius: 50%;
+            border-top-color: var(--accent-gold);
+            animation: spin 1s ease-in-out infinite;
+            margin: 0 auto;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .load-more-btn.loading .text {
+            display: none;
+        }
+        
+        .load-more-btn.loading .spinner {
+            display: block;
+            border-top-color: var(--dark-blue);
+        }
+
+        /* --- Footer (Consistent with index.html) --- */
+        .main-footer {
+            background-color: #080D1A;
+            padding: 4rem 1rem 2rem 1rem;
+            border-top: 1px solid var(--line-color);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            gap: 2.5rem;
+            margin-bottom: 3rem;
+            max-width: 1280px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .footer-logo-section .logo { margin-bottom: 1rem; display: inline-block; font-size: 1.5rem; }
+        .footer-logo-section .description { color: var(--text-muted); line-height: 1.6; max-width: 300px; font-size: 0.9rem; }
+        .footer-section-title { font-size: 1.125rem; font-weight: 700; color: white; margin-bottom: 1.5rem; letter-spacing: 0.05em; }
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 0.75rem; }
+        .footer-links a { color: var(--text-muted); transition: color 0.3s ease, padding-left 0.3s ease; font-size: 0.9rem; }
+        .footer-links a:hover { color: var(--accent-gold); padding-left: 5px; }
+        .footer-bottom-bar { border-top: 1px solid var(--line-color); padding-top: 2rem; text-align: center; font-size: 0.85rem; color: var(--text-muted); max-width: 1280px; margin-left: auto; margin-right: auto; }
+
+        @media (min-width: 640px) { .footer-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (min-width: 1024px) { .footer-grid { grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 3rem; } }
+
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header class="main-header" id="header">
+        <div class="container header-content">
+            <a href="index.html" class="logo" aria-label="Tourismo – Go to homepage">TOURISMO</a>
+            <nav class="main-nav" aria-label="Primary navigation">
+                <a href="Travelmap.html">Travel Map</a>
+                <a href="About-us.html">About Us</a>
+                <a href="Blogs.html" class="active">Blog</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1 class="hero-title">Insights & Ideas</h1>
+            <p class="hero-subtitle">Discover stories, hidden histories, travel tips, and cultural deep dives that bring the soul of Amravati to life.</p>
+        </div>
+    </section>
+
+    <main class="container">
+        <!-- Featured Blog -->
+        <article class="featured-blog scroll-animate" id="featured-post">
+            <!-- Content injected by JS -->
+        </article>
+
+        <!-- Search & Filters -->
+        <div class="controls-section">
+            <div class="filters" id="category-filters">
+                <button class="filter-btn active" data-filter="all">All Articles</button>
+                <button class="filter-btn" data-filter="Nature">Nature</button>
+                <button class="filter-btn" data-filter="History">History</button>
+                <button class="filter-btn" data-filter="Culture">Culture</button>
+            </div>
+            
+            <div class="search-box" role="search">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+                <input type="text" id="search-input" placeholder="Search articles..." aria-label="Search blog articles">
+            </div>
+        </div>
+
+        <!-- Blog Grid -->
+        <div class="blog-grid" id="blog-grid">
+            <!-- Cards injected by JS -->
+        </div>
+
+        <!-- Pagination / Load More -->
+        <div class="load-more-container" id="load-more-container">
+            <button class="load-more-btn" id="load-more-btn">
+                <span class="text">Load More Articles</span>
+                <span class="spinner"></span>
+            </button>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="footer-grid">
+            <div class="footer-column footer-logo-section">
+                <a href="index.html" class="logo">TOURISMO</a>
+                <p class="description">Your ultimate assistant for discovering the hidden gems and breathtaking landscapes of Amravati.</p>
+            </div>
+            <div class="footer-column">
+                <h3 class="footer-section-title">Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="About-us.html">About Us</a></li>
+                    <li><a href="Blogs.html">Blog</a></li>
+                    <li><a href="Travelmap.html">Travel Map</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3 class="footer-section-title">Top Sights</h3>
+                <ul class="footer-links">
+                    <li><a href="bamboo.html">Bamboo Garden</a></li>
+                    <li><a href="oxy.html">Oxygen Park</a></li>
+                    <li><a href="ambtem.html">Ambadevi Temple</a></li>
+                    <li><a href="chhtri.html">Chhatri Talao</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom-bar">&copy; 2025 Tourismo. Created by CEP-GROUP-12.</div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Header scroll effect
+            const header = document.getElementById('header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+
+            // Mock Data
+            const articles = [
+                { id: 1, title: 'The Enduring Legacy of Gawilgarh Fort', category: 'History', date: 'Oct 01, 2025', excerpt: 'Explore the ruins of this majestic 12th-century fort, standing tall as a testament to the region\'s rich and turbulent history.', image: 'https://images.unsplash.com/photo-1632642878036-681412175990?q=80&w=2070&auto=format&fit=crop', featured: true },
+                { id: 2, title: 'A Walk Through the Clouds: Vistas of Chikhaldara', category: 'Nature', date: 'Sep 25, 2025', excerpt: 'Discover the ultimate monsoon retreat with lush green landscapes, cascading waterfalls, and misty valleys.', image: 'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?q=80&w=1948&auto=format&fit=crop', featured: false },
+                { id: 3, title: 'The Spiritual Heart: Ambadevi Temple Guide', category: 'Culture', date: 'Sep 18, 2025', excerpt: 'A deep dive into the history, architecture, and spiritual significance of Amravati’s most revered historic temple.', image: 'https://images.unsplash.com/photo-1588243183536-1eeb4b66dc34?q=80&w=2070&auto=format&fit=crop', featured: false },
+                { id: 4, title: 'A Safari Guide to Melghat Tiger Reserve', category: 'Nature', date: 'Sep 12, 2025', excerpt: 'Planning a trip to Melghat? Here is everything you need to know about spotting majestic tigers amidst the raw wilderness.', image: 'https://images.unsplash.com/photo-1608447702221-1d5423e803c5?q=80&w=2070&auto=format&fit=crop', featured: false },
+                { id: 5, title: 'Uncovering the Secrets of Amner Fort', category: 'History', date: 'Sep 05, 2025', excerpt: 'Nestled on the banks of rivers, Amner Fort offers a fascinating glimpse into the architectural brilliance of the past.', image: 'https://images.unsplash.com/photo-1603812490422-b07221544716?q=80&w=2070&auto=format&fit=crop', featured: false },
+                { id: 6, title: 'Finding Serenity at Shakkar Lake', category: 'Nature', date: 'Aug 29, 2025', excerpt: 'A perfect weekend getaway guide to enjoying sunset reflections and serene boat rides away from the city chaos.', image: 'https://images.unsplash.com/photo-1545465926-291746ac6e83?q=80&w=2071&auto=format&fit=crop', featured: false },
+                { id: 7, title: 'Local Cuisine: Flavors of Vidarbha', category: 'Culture', date: 'Aug 20, 2025', excerpt: 'Dive into the spicy, flavorful, and unique traditional dishes that define the culinary identity of the region.', image: 'https://images.unsplash.com/photo-1606491956689-2ea866880c84?q=80&w=2000&auto=format&fit=crop', featured: false },
+                { id: 8, title: 'Exploring the Mystique of Muktagiri', category: 'History', date: 'Aug 10, 2025', excerpt: 'An architectural marvel featuring 52 temples surrounded by a spectacular waterfall during the monsoon.', image: 'https://images.unsplash.com/photo-1596484552993-9ebb4eb722da?q=80&w=2000&auto=format&fit=crop', featured: false }
+            ];
+
+            const gridContainer = document.getElementById('blog-grid');
+            const featuredContainer = document.getElementById('featured-post');
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const searchInput = document.getElementById('search-input');
+            const loadMoreBtn = document.getElementById('load-more-btn');
+            const loadMoreContainer = document.getElementById('load-more-container');
+
+            let currentFilter = 'all';
+            let currentSearch = '';
+            let displayedCount = 6;
+
+            // Render Featured
+            const renderFeatured = () => {
+                const featured = articles.find(a => a.featured);
+                if (featured && currentFilter === 'all' && currentSearch === '') {
+                    featuredContainer.innerHTML = `
+                        <a href="#" class="featured-card">
+                            <div class="featured-img-container">
+                                <img src="${featured.image}" alt="${featured.title}">
+                            </div>
+                            <div class="featured-content">
+                                <div>
+                                    <span class="tag">${featured.category}</span>
+                                    <h2 class="featured-title">${featured.title}</h2>
+                                    <p class="featured-desc">${featured.excerpt}</p>
+                                </div>
+                                <div class="meta-info">
+                                    <span class="date">${featured.date}</span>
+                                    <span class="read-more">Read Story <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg></span>
+                                </div>
+                            </div>
+                        </a>
+                    `;
+                    featuredContainer.style.display = 'block';
+                } else {
+                    featuredContainer.style.display = 'none';
+                }
+            };
+
+            // Intersection Observer for scroll animations
+            const observeElements = () => {
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.1 });
+
+                document.querySelectorAll('.scroll-animate, .blog-card').forEach(el => observer.observe(el));
+            };
+
+            // Render Grid
+            const renderGrid = () => {
+                let filtered = articles.filter(a => !a.featured || (currentFilter !== 'all' || currentSearch !== ''));
+                
+                if (currentFilter !== 'all') {
+                    filtered = filtered.filter(a => a.category === currentFilter);
+                }
+
+                if (currentSearch) {
+                    const term = currentSearch.toLowerCase();
+                    filtered = filtered.filter(a => 
+                        a.title.toLowerCase().includes(term) || 
+                        a.excerpt.toLowerCase().includes(term)
+                    );
+                }
+
+                const toDisplay = filtered.slice(0, displayedCount);
+                gridContainer.innerHTML = '';
+
+                if (toDisplay.length === 0) {
+                    gridContainer.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: var(--text-muted); padding: 2rem;">No articles found matching your criteria.</p>';
+                    loadMoreContainer.style.display = 'none';
+                    return;
+                }
+
+                toDisplay.forEach((article, index) => {
+                    const delay = (index % 3) * 100; // staggered delay
+                    const card = document.createElement('a');
+                    card.href = '#';
+                    card.className = 'blog-card';
+                    card.style.transitionDelay = `${delay}ms`;
+                    card.innerHTML = `
+                        <div class="card-img-wrapper">
+                            <img src="${article.image}" alt="${article.title}">
+                            <div class="card-img-overlay"></div>
+                        </div>
+                        <div class="card-content">
+                            <span class="tag">${article.category}</span>
+                            <h3 class="card-title">${article.title}</h3>
+                            <p class="card-desc">${article.excerpt}</p>
+                            <div class="meta-info">
+                                <span class="date">${article.date}</span>
+                            </div>
+                        </div>
+                    `;
+                    gridContainer.appendChild(card);
+                });
+
+                if (filtered.length <= displayedCount) {
+                    loadMoreContainer.style.display = 'none';
+                } else {
+                    loadMoreContainer.style.display = 'block';
+                }
+
+                // Small delay to allow element creation before observing
+                setTimeout(observeElements, 50);
+            };
+
+            // Event Listeners
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    e.target.classList.add('active');
+                    currentFilter = e.target.getAttribute('data-filter');
+                    displayedCount = 6;
+                    renderFeatured();
+                    renderGrid();
+                });
+            });
+
+            searchInput.addEventListener('input', (e) => {
+                currentSearch = e.target.value.trim();
+                displayedCount = 6;
+                renderFeatured();
+                renderGrid();
+            });
+
+            loadMoreBtn.addEventListener('click', () => {
+                loadMoreBtn.classList.add('loading');
+                
+                // Simulate network request
+                setTimeout(() => {
+                    displayedCount += 3;
+                    renderGrid();
+                    loadMoreBtn.classList.remove('loading');
+                }, 800);
+            });
+
+            // Initial render
+            renderFeatured();
+            renderGrid();
+            
+            // Trigger initial scroll animations for elements already in viewport
+            setTimeout(() => {
+                document.getElementById('featured-post')?.classList.add('visible');
+            }, 300);
+        });
+    </script>
+</body>
+</html>

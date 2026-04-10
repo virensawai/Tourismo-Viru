@@ -3,7 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tourismo - Interactive Travel Map</title>
+    <title>Tourismo – Interactive Travel Map of Amravati</title>
+    <meta name="description" content="Explore Amravati's top attractions on an interactive map. Filter by interest, search locations, and get directions to temples, parks, forts, and more.">
+    <!-- [SEO] Open Graph tags -->
+    <meta property="og:title" content="Tourismo – Interactive Travel Map of Amravati">
+    <meta property="og:description" content="Explore Amravati's top attractions on an interactive map. Filter by interest and get directions.">
+    <meta property="og:type" content="website">
+    <!-- [PERFORMANCE] Theme color -->
+    <meta name="theme-color" content="#0B1120">
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -203,14 +210,26 @@
             .panel-toggle-btn { left: calc(100% - 2rem); max-width: 380px; }
             .map-panel:not(.is-open) .panel-toggle-btn { left: 1rem; }
         }
+
+        /* [PERFORMANCE] Respect user's motion preferences */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
     </style>
 </head>
 <body>
-    <div class="preloader">
-        <div class="spinner"></div>
+    <!-- [ACCESSIBILITY] Visually hidden h1 for screen readers -->
+    <h1 style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;">Interactive Travel Map of Amravati – Tourismo</h1>
+
+    <div class="preloader" role="status" aria-label="Loading map">
+        <div class="spinner" aria-hidden="true"></div>
     </div>
     
-    <main id="map"></main>
+    <main id="map" aria-label="Interactive map of Amravati tourist attractions"></main>
 
     <aside id="map-panel" class="map-panel">
         <div class="panel-content-wrapper">
@@ -239,8 +258,8 @@
 
                 <section class="panel-section">
                     <h3>Search Locations</h3>
-                    <input type="text" id="search-input" placeholder="e.g., Temple, Fort, Park...">
-                    <div id="search-results"></div>
+                    <input type="text" id="search-input" placeholder="e.g., Temple, Fort, Park..." aria-label="Search tourist locations in Amravati">
+                    <div id="search-results" role="listbox" aria-label="Search results"></div>
                 </section>
                 
                 <div class="details-divider"></div>
@@ -250,8 +269,8 @@
                 </section>
             </div>
         </div>
-        <button id="panel-toggle-btn" class="panel-toggle-btn" title="Toggle Panel">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M12.79 5.23a.75.75 0 01-.02 1.06L8.832 10l3.938 3.71a.75.75 0 11-1.04 1.08l-4.5-4.25a.75.75 0 010-1.08l4.5-4.25a.75.75 0 011.06.02z" clip-rule="evenodd" /></svg>
+        <button id="panel-toggle-btn" class="panel-toggle-btn" title="Toggle Panel" aria-label="Toggle side panel">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M12.79 5.23a.75.75 0 01-.02 1.06L8.832 10l3.938 3.71a.75.75 0 11-1.04 1.08l-4.5-4.25a.75.75 0 010-1.08l4.5-4.25a.75.75 0 011.06.02z" clip-rule="evenodd" /></svg>
         </button>
     </aside>
 
@@ -327,7 +346,7 @@
                 const detailsContainer = document.getElementById('details-container');
                 if (location && location.name) {
                     detailsContainer.innerHTML = `
-                        <img id="details-image" src="${location.image}" alt="${location.name}">
+                        <img id="details-image" src="${location.image}" alt="${location.name}" loading="lazy" decoding="async">
                         <h2 id="details-title">${location.name}</h2>
                         <p id="details-description">${location.description}</p>
                         <div id="action-buttons" class="action-buttons" style="display: grid;">
