@@ -1,0 +1,113 @@
+:root {
+            --dark-blue: #0A0F1A;
+            --panel-bg: #111827;
+            --accent-gold: #D1A35D;
+            --text-primary: #F9FAFB;
+            --text-secondary: #9CA3AF;
+            --line-color: rgba(255, 255, 255, 0.1);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--dark-blue);
+            color: var(--text-primary);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+        }
+
+        #progress-bar {
+            position: fixed;
+            top: 0; left: 0;
+            height: 4px;
+            background-color: var(--accent-gold);
+            width: 0%;
+            z-index: 101;
+            transition: width 0.1s linear;
+        }
+
+        .main-header {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 2rem 1.5rem;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        .main-header.scrolled {
+            padding: 1rem 1.5rem; background-color: rgba(17, 24, 39, 0.8);
+            backdrop-filter: blur(10px); border-bottom: 1px solid var(--line-color);
+        }
+        .header-container { display: flex; justify-content: space-between; align-items: center; max-width: 1280px; margin: 0 auto; padding: 0 1.5rem; }
+        .logo, .main-nav a { text-decoration: none; color: white; transition: color 0.3s ease; }
+        .logo { font-size: 1.5rem; font-weight: 900; letter-spacing: 0.2em; }
+        .main-nav a { font-size: 0.875rem; font-weight: 500; margin-left: 2rem; }
+        .main-nav a:hover { color: var(--accent-gold); }
+
+        .article-hero {
+            position: relative;
+            height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+        }
+        .hero-background {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            /* DYNAMIC BACKGROUND IMAGE */
+            background: linear-gradient(rgba(10, 15, 26, 0.8), var(--dark-blue)), url('https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?q=80&w=1948&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
+        }
+        .hero-content {
+            max-width: 800px;
+            padding: 0 1.5rem;
+        }
+        .hero-content .category { color: var(--accent-gold); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1rem; }
+        .hero-content h1 { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; line-height: 1.2; }
+        .hero-content .meta { color: var(--text-secondary); margin-top: 1.5rem; }
+
+        .article-body {
+            max-width: 750px;
+            margin: -5rem auto 0 auto;
+            background-color: var(--panel-bg);
+            padding: 4rem;
+            border-radius: 1rem;
+            position: relative;
+            z-index: 2;
+            border: 1px solid var(--line-color);
+        }
+        .article-content {
+            font-size: 1.125rem;
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+        .article-content p { margin-bottom: 1.5rem; }
+        .article-content h2 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin: 3rem 0 1.5rem;
+        }
+        .article-content blockquote {
+            border-left: 4px solid var(--accent-gold);
+            padding-left: 1.5rem;
+            margin: 2rem 0;
+            font-style: italic;
+            font-size: 1.25rem;
+            color: var(--text-primary);
+        }
+        .article-content img {
+            width: 100%;
+            height: auto;
+            border-radius: 0.5rem;
+            margin: 2rem 0;
+        }
+
+        .main-footer { padding: 4rem 1.5rem; text-align: center; color: var(--text-secondary); border-top: 1px solid var(--line-color); margin-top: 6rem; }
+        
+        @media (max-width: 768px) {
+            .main-nav { display: none; }
+            .article-body { padding: 2rem; margin-top: -3rem; }
+            .hero-content h1 { font-size: 2.5rem; }
+        }

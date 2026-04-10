@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tourismo – Interactive Travel Map of Amravati</title>
+    <meta name="description" content="Explore Amravati's top attractions on an interactive map. Filter by interest, search locations, and get directions to temples, parks, forts, and more.">
+    <!-- [SEO] Open Graph tags -->
+    <meta property="og:title" content="Tourismo – Interactive Travel Map of Amravati">
+    <meta property="og:description" content="Explore Amravati's top attractions on an interactive map. Filter by interest and get directions.">
+    <meta property="og:type" content="website">
+    <!-- [PERFORMANCE] Theme color -->
+    <meta name="theme-color" content="#0B1120">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- LeafletJS for Interactive Map -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+    
+    <link rel="stylesheet" href="css/Travelmap.css">
+</head>
+<body>
+    <!-- [ACCESSIBILITY] Visually hidden h1 for screen readers -->
+    <h1 style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;">Interactive Travel Map of Amravati – Tourismo</h1>
+
+    <div class="preloader" role="status" aria-label="Loading map">
+        <div class="spinner" aria-hidden="true"></div>
+    </div>
+    
+    <main id="map" aria-label="Interactive map of Amravati tourist attractions"></main>
+
+    <aside id="map-panel" class="map-panel">
+        <div class="panel-content-wrapper">
+            <header class="panel-header">
+                <h2>Explore Amravati</h2>
+            </header>
+            <div class="panel-body">
+                <section class="panel-section">
+                    <h3>Filter by Interest</h3>
+                    <div class="filter-options">
+                        <input type="checkbox" id="filter-religious" value="Religious" class="filter-checkbox" checked>
+                        <label for="filter-religious">🙏 Religious</label>
+
+                        <input type="checkbox" id="filter-nature" value="Nature" class="filter-checkbox" checked>
+                        <label for="filter-nature">🌳 Nature</label>
+
+                        <input type="checkbox" id="filter-historical" value="Historical" class="filter-checkbox" checked>
+                        <label for="filter-historical">🏛️ Historical</label>
+                        
+                        <input type="checkbox" id="filter-recreation" value="Recreation" class="filter-checkbox" checked>
+                        <label for="filter-recreation">🏞️ Recreation</label>
+                    </div>
+                </section>
+
+                <div class="details-divider"></div>
+
+                <section class="panel-section">
+                    <h3>Search Locations</h3>
+                    <input type="text" id="search-input" placeholder="e.g., Temple, Fort, Park..." aria-label="Search tourist locations in Amravati">
+                    <div id="search-results" role="listbox" aria-label="Search results"></div>
+                </section>
+                
+                <div class="details-divider"></div>
+
+                <section id="details-container">
+                    <!-- This content is dynamically populated by JavaScript -->
+                </section>
+            </div>
+        </div>
+        <button id="panel-toggle-btn" class="panel-toggle-btn" title="Toggle Panel" aria-label="Toggle side panel">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M12.79 5.23a.75.75 0 01-.02 1.06L8.832 10l3.938 3.71a.75.75 0 11-1.04 1.08l-4.5-4.25a.75.75 0 010-1.08l4.5-4.25a.75.75 0 011.06.02z" clip-rule="evenodd" /></svg>
+        </button>
+    </aside>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    
+    <script src="js/Travelmap.js"></script>
+</body>
+</html>
+
+

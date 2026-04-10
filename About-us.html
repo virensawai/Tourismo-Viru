@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- [SEO] Improved title with brand name and page context -->
+    <title>About Us – Tourismo | Our Story, Mission & Team</title>
+
+    <!-- [SEO] Added meta description for search engine visibility -->
+    <meta name="description" content="Learn about Tourismo – a platform by CEP-GROUP-12 dedicated to showcasing Amravati's rich history, stunning landscapes, and vibrant culture through a modern digital experience.">
+
+    <!-- [SEO] Open Graph tags for social sharing -->
+    <meta property="og:title" content="About Us – Tourismo | Our Story, Mission & Team">
+    <meta property="og:description" content="Tourismo is a platform by CEP-GROUP-12 dedicated to showcasing Amravati's hidden travel gems through modern technology and design.">
+    <meta property="og:type" content="website">
+
+    <!-- [PERFORMANCE] Theme color for mobile browser chrome -->
+    <meta name="theme-color" content="#0A0F1A">
+
+    <!-- [PERFORMANCE] Preconnect to font provider -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/About-us.css">
+</head>
+<body>
+    <!-- [ACCESSIBILITY] Skip-to-content link for keyboard / screen-reader users -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Custom Cursor (decorative, hidden from assistive tech) -->
+    <div class="cursor" aria-hidden="true"></div>
+    <div class="cursor-outline" aria-hidden="true"></div>
+
+    <!-- Preloader (decorative, hidden from assistive tech) -->
+    <div class="preloader" role="status" aria-label="Loading page">
+        <div class="preloader-gate preloader-gate-top"></div>
+        <div class="preloader-gate preloader-gate-bottom"></div>
+        <div class="preloader-logo" aria-hidden="true">TOURISMO</div>
+    </div>
+
+    <!-- ====================================================================
+         HEADER
+         ==================================================================== -->
+    <header class="main-header" role="banner">
+        <div class="header-container">
+            <a href="index.html" class="logo" aria-label="Tourismo – Go to homepage">TOURISMO</a>
+            <nav class="main-nav" aria-label="Primary navigation">
+                <a href="Travelmap.html">Travel Map</a>
+                <!-- [ACCESSIBILITY] aria-current marks the active page -->
+                <a href="About-us.html" aria-current="page">About Us</a>
+                <a href="Blogs.html">Blog</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ====================================================================
+         MAIN CONTENT
+         ==================================================================== -->
+    <main id="main-content">
+
+        <!-- HERO SECTION -->
+        <section class="hero" aria-labelledby="hero-heading">
+            <div class="hero-background" aria-hidden="true"></div>
+            <div class="hero-emblem" aria-hidden="true"></div>
+            <div class="hero-content container">
+                <h1 id="hero-heading" data-animate-text>Crafted with Passion for Discovery</h1>
+                <p>We are a team of creators, explorers, and tech enthusiasts dedicated to unveiling the beauty of Amravati through a seamless digital experience.</p>
+            </div>
+        </section>
+
+        <!-- OUR JOURNEY SECTION -->
+        <section class="content-section" aria-labelledby="story-heading">
+            <div class="container">
+                <div class="section-header" data-animate>
+                    <p class="subtitle">Our Journey</p>
+                    <h2 id="story-heading" class="title" data-animate-text>The Story Behind Tourismo</h2>
+                </div>
+                <div class="story-grid" data-animate>
+                    <article class="story-item story-item--text">
+                        <p>Tourismo was born from a simple idea: to make discovering Amravati's treasures easier and more engaging for everyone. As students and locals, we saw the incredible potential in our region's rich history, stunning natural landscapes, and vibrant culture.</p>
+                    </article>
+                    <div class="story-item story-item--image">
+                        <!-- [PERFORMANCE] lazy loading for below-fold image -->
+                        <img src="assets/CEP-GROUP-12.jpeg"
+                             alt="A team collaborating on a project with laptops and notes on a table"
+                             loading="lazy"
+                             decoding="async"
+                             width="640"
+                             height="480">
+                    </div>
+                    <article class="story-item story-item--mission">
+                        <h3>Our Mission</h3>
+                        <p>We realized that while the passion to explore existed, a modern, centralized, and user-friendly guide was missing. That's why we, CEP-GROUP-12, decided to combine our skills in technology and design to build a platform that not only informs but also inspires.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- TEAM SECTION (Horizontal Scroll) -->
+        <section class="horizontal-scroll-section" data-animate aria-labelledby="team-heading">
+            <div class="horizontal-scroll-container">
+                <div class="section-header" style="position: absolute; top: 10vh; left: 50%; transform: translateX(-50%); z-index: 10;">
+                    <p class="subtitle">The Creators</p>
+                    <h2 id="team-heading" class="title" data-animate-text>Meet the Team</h2>
+                </div>
+                <div class="team-track" role="list">
+
+                    <!-- Team Member: Virendra Sawai -->
+                    <article class="team-card" role="listitem">
+                        <div class="team-card-content">
+                            <div class="avatar" aria-hidden="true">VS</div>
+                            <h3>Virendra Sawai</h3>
+                            <p class="role">Project Lead &amp; Architect</p>
+                            <div class="socials">
+                                <a href="#" aria-label="Virendra Sawai on LinkedIn">
+                                    <svg aria-hidden="true" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                                </a>
+                                <a href="#" aria-label="Virendra Sawai on GitHub">
+                                    <svg aria-hidden="true" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Team Member: Raj Tagade -->
+                    <article class="team-card" role="listitem">
+                        <div class="team-card-content">
+                            <div class="avatar" aria-hidden="true">RT</div>
+                            <h3>Raj Tagade</h3>
+                            <p class="role">Member</p>
+                            <div class="socials">
+                                <a href="#" aria-label="Raj Tagade on LinkedIn">
+                                    <svg aria-hidden="true" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Team Member: Trisha Igale -->
+                    <article class="team-card" role="listitem">
+                        <div class="team-card-content">
+                            <div class="avatar" aria-hidden="true">TI</div>
+                            <h3>Trisha Igale</h3>
+                            <p class="role">Member</p>
+                            <div class="socials">
+                                <a href="#" aria-label="Trisha Igale on GitHub">
+                                    <svg aria-hidden="true" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Team Member: Mansi -->
+                    <article class="team-card" role="listitem">
+                        <div class="team-card-content">
+                            <div class="avatar" aria-hidden="true">MB</div>
+                            <h3>Mansi</h3>
+                            <p class="role">Member</p>
+                            <div class="socials">
+                                <a href="#" aria-label="Mansi on LinkedIn">
+                                    <svg aria-hidden="true" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Team Member: Soham Waghmare -->
+                    <article class="team-card" role="listitem">
+                        <div class="team-card-content">
+                            <div class="avatar" aria-hidden="true">SW</div>
+                            <h3>Soham Waghmare</h3>
+                            <p class="role">Member</p>
+                            <div class="socials">
+                                <a href="#" aria-label="Soham Waghmare on LinkedIn">
+                                    <svg aria-hidden="true" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Team Member: Bhavesh Umak -->
+                    <article class="team-card" role="listitem">
+                        <div class="team-card-content">
+                            <div class="avatar" aria-hidden="true">BU</div>
+                            <h3>Bhavesh Umak</h3>
+                            <p class="role">Member</p>
+                            <div class="socials">
+                                <a href="#" aria-label="Bhavesh Umak on LinkedIn">
+                                    <svg aria-hidden="true" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Team Member: Kaveri -->
+                    <article class="team-card" role="listitem">
+                        <div class="team-card-content">
+                            <div class="avatar" aria-hidden="true">KB</div>
+                            <h3>Kaveri</h3>
+                            <p class="role">Member</p>
+                            <div class="socials">
+                                <a href="#" aria-label="Kaveri on LinkedIn">
+                                    <svg aria-hidden="true" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Team Member: Shweta -->
+                    <article class="team-card" role="listitem">
+                        <div class="team-card-content">
+                            <div class="avatar" aria-hidden="true">SK</div>
+                            <h3>Shweta</h3>
+                            <p class="role">Member</p>
+                            <div class="socials">
+                                <a href="#" aria-label="Shweta on LinkedIn">
+                                    <svg aria-hidden="true" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Team Member: Ashwini Kavale -->
+                    <article class="team-card" role="listitem">
+                        <div class="team-card-content">
+                            <div class="avatar" aria-hidden="true">AK</div>
+                            <h3>Ashwini Kavale</h3>
+                            <p class="role">Member</p>
+                            <div class="socials">
+                                <a href="#" aria-label="Ashwini Kavale on LinkedIn">
+                                    <svg aria-hidden="true" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Team Member: Samiksha Nimbhorkar -->
+                    <article class="team-card" role="listitem">
+                        <div class="team-card-content">
+                            <div class="avatar" aria-hidden="true">SN</div>
+                            <h3>Samiksha Nimbhorkar</h3>
+                            <p class="role">Member</p>
+                            <div class="socials">
+                                <a href="#" aria-label="Samiksha Nimbhorkar on LinkedIn">
+                                    <svg aria-hidden="true" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT SECTION -->
+        <section class="content-section" aria-labelledby="contact-heading">
+            <div class="container contact-content" data-animate>
+                <div class="section-header">
+                    <p class="subtitle">Get in Touch</p>
+                    <h2 id="contact-heading" class="title" data-animate-text>Have Questions?</h2>
+                </div>
+                <p>We are always looking for ways to improve Tourismo. If you have any suggestions, questions, or just want to say hello, we'd love to hear from you.</p>
+                <!-- [BUG FIX] Displayed email now matches the mailto href -->
+                <a href="mailto:tourismooo726@gmail.com" class="contact-email" aria-label="Send email to tourismooo726@gmail.com">tourismooo726@gmail.com</a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ====================================================================
+         FOOTER
+         ==================================================================== -->
+    <footer class="main-footer" role="contentinfo">
+        <p>&copy; 2025 Tourismo. A Project by CEP-GROUP-12.</p>
+    </footer>
+
+    <!-- ====================================================================
+         JAVASCRIPT
+         ==================================================================== -->
+    <script src="js/About-us.js"></script>
+</body>
+</html>
