@@ -160,7 +160,7 @@
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            background-image: linear-gradient(to top, var(--dark-blue) 15%, rgba(11, 17, 32, 0.4) 60%), url('../assets/index_hero%20background.jpg');
+            background-image: linear-gradient(to top, var(--dark-blue) 15%, rgba(11, 17, 32, 0.4) 60%), url('../assets/index_hero_background.jpg');
             background-size: cover;
             background-position: center;
         }
