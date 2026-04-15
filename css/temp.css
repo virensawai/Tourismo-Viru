@@ -14,7 +14,18 @@
             color: var(--text-primary);
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
-            overflow-x: hidden;
+        }
+
+        @keyframes loading-bg {
+            0% { background-position: center, 200% 0; }
+            100% { background-position: center, -200% 0; }
+        }
+
+        .skeleton-loader {
+            background: linear-gradient(90deg, #111827 25%, #1f2937 50%, #111827 75%);
+            background-size: 200% 100%;
+            animation: loading-bg 1.5s infinite!important;
+            border-radius: 0.5rem;
         }
 
         #progress-bar {
@@ -53,9 +64,10 @@
         .hero-background {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(rgba(10, 15, 26, 0.8), var(--dark-blue)), url('https://images.unsplash.com/photo-1632642878036-681412175990?q=80&w=2070&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center;
+            background: linear-gradient(rgba(10, 15, 26, 0.8), var(--dark-blue)), linear-gradient(90deg, #111827 25%, #1f2937 50%, #111827 75%);
+            background-size: cover, 200% 100%;
+            background-position: center, 0 0;
+            animation: loading-bg 1.5s infinite;
             z-index: -1;
         }
         .hero-content {

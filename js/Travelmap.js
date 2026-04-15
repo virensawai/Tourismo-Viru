@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const detailsContainer = document.getElementById('details-container');
                 if (location && location.name) {
                     detailsContainer.innerHTML = `
-                        <img id="details-image" src="${location.image}" alt="${location.name}" loading="lazy" decoding="async">
+                        <div id="details-image" class="skeleton-loader" style="width: 100%; height: 250px; border-radius: 0.5rem; margin-bottom: 1rem;" aria-label="${location.name} loading placeholder"></div>
                         <h2 id="details-title">${location.name}</h2>
                         <p id="details-description">${location.description}</p>
                         <div id="action-buttons" class="action-buttons" style="display: grid;">

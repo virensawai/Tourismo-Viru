@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     featuredContainer.innerHTML = `
                         <a href="#" class="featured-card">
                             <div class="featured-img-container">
-                                <img src="${featured.image}" alt="${featured.title}">
+                                <div class="skeleton-loader" style="width: 100%; height: 100%;" aria-label="${featured.title} loading placeholder"></div>
                             </div>
                             <div class="featured-content">
                                 <div>
@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     card.style.transitionDelay = `${delay}ms`;
                     card.innerHTML = `
                         <div class="card-img-wrapper">
-                            <img src="${article.image}" alt="${article.title}">
+                            <div class="skeleton-loader" style="width: 100%; height: 100%;" aria-label="${article.title} loading placeholder"></div>
                             <div class="card-img-overlay"></div>
                         </div>
                         <div class="card-content">

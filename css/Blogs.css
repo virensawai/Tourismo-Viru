@@ -32,6 +32,18 @@
             color: inherit;
         }
 
+        @keyframes loading-bg {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        .skeleton-loader {
+            background: linear-gradient(90deg, #111827 25%, #1f2937 50%, #111827 75%);
+            background-size: 200% 100%;
+            animation: loading-bg 1.5s infinite!important;
+            border-radius: 0.5rem;
+        }
+
         ul {
             list-style: none;
         }
